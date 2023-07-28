@@ -1,0 +1,22 @@
+<%= render "/pages/nav" %>
+<div class="container-fluid" >
+    <div class="row main-content bg-color text-center">
+        <div class=" text-center p-5 text-light">
+            <h2 class="text-light font"> Synced Moments </h2>
+            <hr>
+            <% if @tasks.present? %>
+                <% @tasks.each do |cat|  %>
+                    <p> <%= link_to cat.name, show_task_path(cat) %> </p>
+                    
+                    <%= button_to "delete", destroy_task_path(cat), method: :delete %>
+                    <hr>
+                <% end %>
+            <% else %>
+            <h5 class="p-5">No Moment Found</h5>
+            <% end %>    
+
+            <%= link_to "Sync New Moment", new_task_path, class: "btn btn-success" %>
+        </div>    
+
+    </div>
+</div>          

@@ -1,0 +1,10 @@
+<h1><%= @category.name %></h1>
+<ul>
+  <% @tasks.each do |task| %>
+    <li><%= link_to task.name, show_task_path %></li>
+    
+    <%= button_to "delete", destroy_task_path(task), method: :delete %>
+  <% end %>
+</ul>
+
+<%= link_to 'Back to Categories', categories_path %>

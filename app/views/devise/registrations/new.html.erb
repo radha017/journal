@@ -1,0 +1,43 @@
+<div class="container-fluid" >
+<div class="row main-content bg-success text-center">
+      <div class="col-md-4 text-center company__info">
+				<span class="company__logo"><h2><span ></span></h2></span>
+				<h4 class="company_title">"A Space to Unite Your Thoughts,<br> Sync Your Heartfelt Moments."</h4>
+			</div>
+      <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+				<div class="container-fluid">
+					<div class="row lgin">
+						<h2>Create account</h2>
+					</div>
+    <div class="row">
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "form-group") do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field row">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form__input fields", placeholder: "Enter your email" %>
+  </div>
+
+  <div class="field row">
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form__input fields", placeholder: "Enter your name" %>
+  </div>
+
+  <div class="field row">
+    <%= f.password_field :password, autocomplete: "new-password", class: "form__input fields",placeholder: "Enter your password (6 character minimum)" %>
+  </div>
+
+  <div class="field row">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form__input fields", placeholder: "Confirm your password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up", class: "btn btn-outline-success" %>
+  </div>
+<% end %>
+
+<div class="bot">
+<%= render "devise/shared/links" %>
+</div>
+
+
+</div>
