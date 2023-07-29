@@ -5,7 +5,10 @@
 <hr>
 <% if @categories.present? %>
 <% @categories.each do |cat|  %>
-    <h5> <%= link_to cat.name, show_category_path(cat.id), class: "text-decoration-none text-dark" %> </h5>
+<div>
+    <h5> <%= link_to cat.name, show_category_path(cat.id), class: "text-decoration-none text-dark" %> <%= link_to "Edit", edit_category_path(cat), class: "btn btn-warning" %> </h5>
+    <hr>
+    </div>
 <% end %>
 <% else %>
     <p> No category available </p>

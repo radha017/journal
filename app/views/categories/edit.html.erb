@@ -1,3 +1,23 @@
-<h1>Edit Category</h1>
+<%= render "/pages/nav" %>
+<div class="container-fluid" >
+    <div class="row main-content bg-color text-center">
+        <div class=" text-center p-5 text-light">
+            <h2 class="font">Edit Category </h2> 
+            <hr> <br>
 
-<%= render 'form', category: @category %>
+            <%= form_with model: @category, url: update_category_path(@category), local: true do |f| %>
+
+            <p>
+            <%= f.text_field :name, class: "form_input fields", placeholder: "Enter category name" %>
+        </p>
+
+        <p>
+            <%= f.submit class: "btn btn-success" %>
+        </p>
+
+        </div>
+
+            <% end %>
+        </div>
+    </div>
+</div>

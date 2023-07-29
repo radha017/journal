@@ -34,8 +34,8 @@
        <% tasks.each do |task| %>
           <tr>
           <th scope="row"><%= task.name %></th>
-        <td><%= task.body %></td>
         <td><%= task.category.name %></td>
+        <td><%= task.body %></td>
         <td><%= task.date %></td>
         <td><%= link_to "Edit", edit_task_path(tasks), class: "btn btn-warning" %>
       <%= link_to "Delete", destroy_task_path(tasks), method: :delete, class: "btn btn-danger" %></td>
