@@ -4,11 +4,8 @@ require 'rails_helper'
 RSpec.describe Category, type: :model do
     describe 'associations' do
         it 'belongs to a user' do
-          # Create a User and Category instance
           user = User.create(name: 'John Doe', email: 'john@example.com', password: 'password')
           category = Category.new(name: 'Test Category', user: user)
-    
-          # Check if the category is associated with the user
           expect(category.user).to eq(user)
         end
       end
