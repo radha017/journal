@@ -1,10 +1,47 @@
-<h1><%= @category.name %></h1>
-<ul>
-  <% @tasks.each do |task| %>
-    <li><%= link_to task.name, show_task_path %></li>
-    
-    <%= button_to "delete", destroy_task_path(task), method: :delete %>
-  <% end %>
-</ul>
 
-<%= link_to 'Back to Categories', categories_path %>
+<%= render "/pages/nav" %>
+<div class="container-fluid" >
+    <div class="row main-content bg-color text-center">
+        <div class=" text-center p-5">
+            <h2> <%= @category.name %> </h2>
+      
+                <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">Task</th>
+                <th scope="col">Category</th>
+                <th scope="col">Description</th>
+                <th scope="col">Date</th>
+                <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% if @tasks.present? %>
+            <% @tasks.each do |task, category| %>
+                    <tr>
+                    <th scope="row"><%= task.name %></th>
+                    <td><%= task.category.name %></td>
+                    <td><%= task.body %></td>
+                    <td><%= task.date %></td>
+                    <td><%= link_to "Edit", edit_task_path(task), class: "btn btn-warning" %>
+                <%= link_to "Delete", destroy_task_path(task), method: :delete, class: "btn btn-danger" %></td>
+                </tr>
+
+                <% end %>
+             <% else %>
+             <tr>
+                 <td colspan="5">No Tasks </td>
+             </tr> 
+             <tr>
+                  <td colspan="5"><%= link_to "Add Task",  new_task_path, class: "btn btn-warning" %></td>
+             </tr>     
+               
+             <% end %>
+            </tbody>
+            </table>
+      <%= link_to 'Back to Categories', categories_path, class: "btn btn-success" %>
+ 
+        </div>    
+      
+    </div>
+</div>          

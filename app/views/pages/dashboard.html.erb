@@ -3,45 +3,65 @@
 <div class= "d-flex flex-column align-items-center vw-100 "  >
   <div class="text-center">
     <br>
-    <%# <h1> Moments Hub</h1> %>
-    <h5>Welcome to your Moments Hub,
-    <%= @user.name %>!, Where <%= @user.name %>'s Life's Memories Unite.</h5>
+    <h5>Welcome to your Dashboard,
+    <%= @user.name %>!</h5>
     <br>
-    <div class="d-flex justify-content-evenly">
-    <p><%= link_to "Manage Life's Moments", categories_path, class: "btn btn-info" %></p>
-    <p><%= link_to "View Synced Momements", tasks_path, class: "btn btn-secondary" %></p>
-    <p><%= link_to "Sync New Moments", new_task_path, class: "btn btn-warning" %></p>
-  </div> 
-  <%= link_to `<i class="bi bi-three-dots-vertical"></i>`, home_path %>
+     
     <br>
     <%= form_with url: dashboard_path, method: :get do |f| %> 
       <p>
       <%= f.date_field :selected_date, value: @selected_date, class: "p-2 rounded-3 border border-light " %>
-      <%= f.submit "Time Travel", class: "btn btn-success" %>
+      <%= f.submit "Submit", class: "btn btn-success" %>
       </p>
     <% end %>
 
     <div class="container-lg" >
-    <div class="row bg-color text-center p-5 text-light ">
+    <div class=" bg-color p-5 ">
     <% if @tasks_by_category.present? %>
-    <% @tasks_by_category.each do |category, tasks| %>
-      <h2 class="text-light"><%= category.name %></h2>
-        <% tasks.each do |task| %>
-          <div class="text-start">
-            <h3><%= task.name %> </h3>
-            <p ><%= task.body %></p>
-            <hr>
-          </div>
-        <% end %>
-    <% end %>
+     
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Task</th>
+      <th scope="col">Category</th>
+      <th scope="col">Description</th>
+      <th scope="col">Date</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @tasks_by_category.each do |category, tasks| %>
+       <% tasks.each do |task| %>
+          <tr>
+          <th scope="row"><%= task.name %></th>
+        <td><%= task.body %></td>
+        <td><%= task.category.name %></td>
+        <td><%= task.date %></td>
+        <td><%= link_to "Edit", edit_task_path(tasks), class: "btn btn-warning" %>
+      <%= link_to "Delete", destroy_task_path(tasks), method: :delete, class: "btn btn-danger" %></td>
+      </tr>
+      <% end %>
+      <% end %>
+  </tbody>
+</table>
+   
+      
+    
     <% else %>
-    <h5>No Moments Found</h5>
+    <h5>No Task Found</h5>
     <p>
-        <%= link_to "Sync New Moments", new_task_path, class: "text-decoration-none" %>
+        <%= link_to "Add new task", new_task_path, class: "text-decoration-none" %>
     </p>
     <% end %>
-    </div>
+
 </div>
    
   </div>
+
+  <div class="d-flex justify-content-evenly p-5">
+    <p><%= link_to "Manage Categories", categories_path, class: "btn btn-dark" %></p>
+    <p><%= link_to "View All Tasks", tasks_path, class: "btn btn-dark" %></p>
+    <p><%= link_to "Add new task", new_task_path, class: "btn btn-dark" %></p>
+  </div>
 </div>
+

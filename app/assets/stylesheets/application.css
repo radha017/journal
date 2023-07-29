@@ -6,7 +6,7 @@
 	box-sizing: border-box;
 }
 body{
-    background-color: #F5E6CC;
+    background-color: #fcf8ef;
 }
 
 .home-sub {
@@ -44,7 +44,7 @@ body{
 	display: flex;
 }
 .company__info{
-	background-color: #800020;
+	background-color: #8b8b8b;
 	border-top-left-radius: 20px;
 	border-bottom-left-radius: 20px;
 	display: flex;
@@ -123,5 +123,8 @@ form{
 }
 
 .bg-color{
-	background-color: #800020;
+	background-color: #dfdfdf;
 }
+
+
+
